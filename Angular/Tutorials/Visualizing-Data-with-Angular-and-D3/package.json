@@ -4,10 +4,9 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
     "ng": "ng",
-    "lint": "ng lint",
-    "postinstall": "ng build --aot -prod"
+    "start": "ng serve",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -21,27 +20,18 @@
     "@angular/router": "^5.0.1",
     "core-js": "^2.4.1",
     "d3": "^4.11.0",
-    "express": "^4.16.3",
-    "path": "^0.12.7",
     "rxjs": "^5.5.2",
     "ts-helpers": "^1.1.2",
-    "zone.js": "^0.8.14",
-    "typescript": "2.4.2"
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^6.0.8",
-    "@angular/compiler-cli": "^5.2.11",
+    "@angular/cli": "1.5.0",
+    "@angular/compiler-cli": "^5.0.1",
     "@types/d3": "^4.4.1",
     "@types/node": "^6.0.60",
     "codelyzer": "~4.0.0",
-    "enhanced-resolve": "^4.0.0",
     "ts-node": "~3.2.0",
     "tslint": "^5.7.0",
-    "typescript": "2.4.2",
-    "@angular-devkit/build-angular": "~0.6.8"
-  },
-  "engines": {
-    "node": "8.11.1",
-    "npm": "6.0.1"
+    "typescript": "2.4.2"
   }
 }

@@ -1,8 +1,6 @@
-# Angular 5 with D3 Demo
+# Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1. This project is based on [Liran's Demo](https://medium.com/netscape/visualizing-data-with-angular-and-d3-209dde784aeb)
-
-**You can check out the demo [here](https://lsharir.github.io/angular-d3-graph-example/).**
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
 ## Development server
 
