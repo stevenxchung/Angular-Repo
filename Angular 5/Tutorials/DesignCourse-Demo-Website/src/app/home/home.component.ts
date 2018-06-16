@@ -9,6 +9,7 @@ import {
   query,
   stagger
 } from '@angular/animations';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -42,33 +43,35 @@ import {
     ])
   ]
 })
+
 export class HomeComponent implements OnInit {
 
   itemCount: number;
   btnText: string = 'Add an item';
   goalText: string = 'My first life goal';
-  goals = [
-    'Climb half dome',
-    'Become a millionaire',
-    'Travel the world'
-  ];
+  goals = [];
 
-  constructor() { }
+  // Create instances through dependency injection
+  constructor(private _data: DataService) { }
 
   ngOnInit() {
-     this.itemCount = this.goals.length;
+    this.itemCount = this.goals.length;
+    this._data.goal.subscribe(res => this.goals = res);
+    this._data.changeGoal(this.goals);
   }
 
-  // Add item to list
+  // Add element to the list
   addItem() {
     this.goals.push(this.goalText);
     this.goalText = '';
     this.itemCount = this.goals.length;
+    this._data.changeGoal(this.goals);
   }
 
-  // Remove item from list
+  // Remove and item from the list
   removeItem(i) {
     this.goals.splice(i, 1);
+    this._data.changeGoal(this.goals);
   }
 
 }
