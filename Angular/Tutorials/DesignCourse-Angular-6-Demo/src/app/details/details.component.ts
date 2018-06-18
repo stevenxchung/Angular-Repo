@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
+// We use ActivatedRoute because of the :id after details/
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
