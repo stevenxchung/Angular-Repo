@@ -5,7 +5,7 @@
 const myElem = document.querySelector('#myElem');
 
 function consoleLogClick(x) {
-  console.log(`clicked! $(x)`);
+  console.log(`clicked! ${x}`);
 }
 
 myElem.addEventListener('click', consoleLogClick);
@@ -18,3 +18,18 @@ arr.forEach(function cb(x) {
   console.log(x);
 });
 console.log('after');
+
+// Example 3: Promises
+const res = fetch(
+  'https://jsonplaceholder.typicode.com/users/1'
+).then(r => r.json());
+
+function successCallback(value) {
+  console.log('We got back ${value}');
+}
+
+function failureCallback(err) {
+  console.error(`:( ${err}`);
+}
+
+res.then(successCallback, failureCallback);
