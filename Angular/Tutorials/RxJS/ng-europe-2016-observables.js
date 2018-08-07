@@ -53,3 +53,30 @@ readable.on('data', nextDataCallback);
 readable.on('error', errorCallback);
 readable.on('end', doneCallback);
 
+// Example: Generic API - Step 1
+function nextCallback(data){
+  console.log(data);
+}
+
+function errorCallback(err) {
+  console.log(err);
+}
+
+function completeCallback() {
+  console.log('done');
+}
+
+function giveMeSomeData(nextCB, errorCB, completeCB) {
+  // Click event example
+  // document.addEventListener('click', nextCB);
+  // Fetch url example
+  // fetch(url).then(nextCB, errorCB);
+  [10, 20, 30].forEach(nextCB);
+}
+
+// Invoking giveMeSomeData()
+giveMeSomeData(
+  nextCallback,
+  errorCallback,
+  completeCallback
+);
