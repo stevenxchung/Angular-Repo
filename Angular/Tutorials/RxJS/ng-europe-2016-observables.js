@@ -2,27 +2,27 @@
 // RxJS is all about getting any kind of callback in JS and representing that as a collection, then you can operate on that collection.
 
 // Example 1: Callbacks
-const myElem = document.querySelector('#myElem');
+const myElem = document.querySelector("#myElem");
 
 function consoleLogClick(x) {
   console.log(`clicked! ${x}`);
 }
 
-myElem.addEventListener('click', consoleLogClick);
+myElem.addEventListener("click", consoleLogClick);
 
 // Example 2: Arrays
 const arr = [10, 20, 30, 40, 50, 60];
 
-console.log('before');
+console.log("before");
 arr.forEach(function cb(x) {
   console.log(x);
 });
-console.log('after');
+console.log("after");
 
 // Example 3: Promises
-const res = fetch(
-  'https://jsonplaceholder.typicode.com/users/1'
-).then(r => r.json());
+const res = fetch("https://jsonplaceholder.typicode.com/users/1").then(r =>
+  r.json()
+);
 
 function successCallback(value) {
   console.log(`We got back ${value}`);
@@ -46,15 +46,15 @@ function errorCallback(err) {
 }
 
 function doneCallback() {
-  console.log('There will be no more data.');
+  console.log("There will be no more data.");
 }
 
-readable.on('data', nextDataCallback);
-readable.on('error', errorCallback);
-readable.on('end', doneCallback);
+readable.on("data", nextDataCallback);
+readable.on("error", errorCallback);
+readable.on("end", doneCallback);
 
-// Example: Generic API - Step 1
-function nextCallback(data){
+// Example 5: Generic API - Step 1
+function nextCallback(data) {
   console.log(data);
 }
 
@@ -63,7 +63,7 @@ function errorCallback(err) {
 }
 
 function completeCallback() {
-  console.log('done');
+  console.log("done");
 }
 
 function giveMeSomeData(nextCB, errorCB, completeCB) {
@@ -75,21 +75,17 @@ function giveMeSomeData(nextCB, errorCB, completeCB) {
 }
 
 // Invoking giveMeSomeData()
-giveMeSomeData(
-  nextCallback,
-  errorCallback,
-  completeCallback
-);
+giveMeSomeData(nextCallback, errorCallback, completeCallback);
 
-// Example: Generic API - Step 2
+// Example 5: Generic API - Step 2
 function createObservable(subscribe) {
   return {
-    subscribe: subscribe,
+    subscribe: subscribe
   };
 }
 
 const clickObservable = createObservable(function subscribe(ob) {
-  document.addEventListener('click', ob.next);
+  document.addEventListener("click", ob.next);
 });
 
 const arrayObservable = createObservable(function subscribe(ob) {
@@ -98,16 +94,63 @@ const arrayObservable = createObservable(function subscribe(ob) {
 });
 
 const observer = {
-  next: function nextCallback(data){
+  next: function nextCallback(data) {
     console.log(data);
   },
   error: function errorCallback(err) {
     console.log(err);
   },
   complete: function completeCallback() {
-    console.log('done');
+    console.log("done");
   }
-}
+};
 
 // Invoking subscribe()
 arrayObservable.subscribe(observer);
+
+// Example 5: Generic API - Step 3
+function map(transformFn) {
+  const inputObservable = this;
+  const outputObservable = createObservable(function subscribe(outputObserver) {
+    inputObservable.subscribe({
+      next: function(x) {
+        const y = transformFn(x);
+        outputObserver.next(y);
+      },
+      error: e => outputObserver.error(e),
+      complete: () => outputObserver.complete()
+    });
+  });
+  return outputObservable;
+}
+
+function createObservable(subscribe) {
+  return {
+    subscribe: subscribe,
+    map: map
+  };
+}
+
+const clickObservable = createObservable(function subscribe(ob) {
+  document.addEventListener("click", ob.next);
+});
+
+const arrayObservable = createObservable(function subscribe(ob) {
+  [10, 20, 30].forEach(ob.next);
+  ob.complete();
+});
+
+const observer = {
+  next: function nextCallback(data) {
+    console.log(data);
+  },
+  error: function errorCallback(err) {
+    console.log(err);
+  },
+  complete: function completeCallback() {
+    console.log("done");
+  }
+};
+
+// Invoking subscribe()
+arrayObservable.map(x => x / 10).subscribe(observer);
