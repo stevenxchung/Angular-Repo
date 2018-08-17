@@ -1,0 +1,25 @@
+.container-modal {
+    margin: 25% auto;
+    width: 50%;
+    height: 50%;
+}
+
+.modal-header {
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50%;
+    width: 100%;
+}
+
+.inline-modal-p {
+    float: right;
+}
+
+.right, .left {
+    margin: 10px;
+}
