@@ -2,12 +2,12 @@
   <h3 class="modal-header">This is the modal</h3>
   <div class="container">
     <div>
-      <p class="inline-modal-p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore, doloremque illo assumenda odio, ab praesentium aut fuga atque totam dolorem minima voluptatum a repellat omnis? Enim harum quos officiis reprehenderit?</p>
+      <p class="inline-modal-p">{{ navTips[index] }}</p>
     </div>
     <div class="flex">
-      <button class="left btn btn-secondary btn-lg active"><</button>
+      <button class="left btn btn-secondary btn-lg active" (click)="previous()"><</button>
       <h3>Navigate!</h3>
-      <button class="right btn btn-secondary btn-lg active">></button>
+      <button class="right btn btn-secondary btn-lg active" (click)="next()">></button>
     </div>
   </div>
 </div>
