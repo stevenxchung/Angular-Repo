@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavTips } from '../nav-tips';
 
 @Component({
   selector: 'app-pop-up-modal',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pop-up-modal.component.css']
 })
 export class PopUpModalComponent implements OnInit {
+  navTips: Array<any> = NavTips;
+  index: number = 0;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
 
+  previous() {
+    if (this.index < this.navTips.length && this.index > 0) {
+      this.index -= 1;
+    }
+  }
+
+  next() {
+    if (this.index < (this.navTips.length - 1)) {
+      this.index += 1;
+    }
+  }
 }
