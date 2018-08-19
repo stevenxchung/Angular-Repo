@@ -12,12 +12,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50%;
+    margin-top: 15%;
     width: 100%;
 }
 
 .inline-modal-p {
-    float: right;
+    text-align: center;
+    padding-top: 50px;
 }
 
 .right, .left {
