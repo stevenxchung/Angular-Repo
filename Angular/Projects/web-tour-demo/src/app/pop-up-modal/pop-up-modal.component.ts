@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavTips } from '../nav-tips';
+import { NavHeaders } from '../nav-tips';
+import { NavElements } from '../nav-tips';
 
 @Component({
   selector: 'app-pop-up-modal',
@@ -8,12 +10,13 @@ import { NavTips } from '../nav-tips';
 })
 export class PopUpModalComponent implements OnInit {
   navTips: Array<any> = NavTips;
+  navHeaders: Array<any> = NavHeaders;
+  navElements: Array<any> = NavElements;
   index: number = 0;
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   previous() {
     if (this.index < this.navTips.length && this.index > 0) {
@@ -22,8 +25,12 @@ export class PopUpModalComponent implements OnInit {
   }
 
   next() {
-    if (this.index < (this.navTips.length - 1)) {
+    if (this.index < this.navTips.length - 1) {
       this.index += 1;
     }
+  }
+
+  focus() {
+    document.getElementById(this.navElements[this.index]).focus();
   }
 }
