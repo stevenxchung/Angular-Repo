@@ -1,13 +1,13 @@
 <div class="container-modal">
-  <h3 class="modal-header">This is the modal</h3>
+  <h3 class="modal-header">{{ navHeaders[index] }}</h3>
   <div class="container">
     <div>
       <p class="inline-modal-p">{{ navTips[index] }}</p>
     </div>
     <div class="flex">
-      <button class="left btn btn-secondary btn-lg active" (click)="previous()"><</button>
+      <button class="left btn btn-secondary btn-lg active" (click)="previous(); focus()"><</button>
       <h3>Navigate!</h3>
-      <button class="right btn btn-secondary btn-lg active" (click)="next()">></button>
+      <button class="right btn btn-secondary btn-lg active" (click)="next(); focus()">></button>
     </div>
   </div>
 </div>
