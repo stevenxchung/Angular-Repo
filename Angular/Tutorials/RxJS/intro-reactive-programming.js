@@ -1,0 +1,12 @@
+// Understand Reactive Programming using RxJS
+// What is an event stream?
+// An event stream is a sequence of ongoing events ordered in time which can emit three things:
+// a value, error, or complicated signal.
+
+// Synchronous
+console.clear();
+let source = ['1', '1', 'foo', '2', '3', '5', 'bar', '8', '13'];
+let result = source;
+console.log(result);
+
+// Asynchronous
